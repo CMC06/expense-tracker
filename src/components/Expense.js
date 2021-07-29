@@ -1,9 +1,9 @@
 const Expense = ({ expense }) => {
   return (
     <div className="itemizedExpense">
-      <div className="eDateAmount"><p>Date: {expense.due}</p><p>Expense amount: ${expense.amount}</p></div>
-      <p>Payee: {expense.payee}</p>
-      {expense.description ? <p>Description: {expense.description}</p> : null}
+      <div className="eDateAmount"><p><strong>Date: </strong>{expense.due}</p><p><strong>Expense amount: </strong>${expense.amount}</p></div>
+      <p><strong>Payee: </strong>{expense.payee}</p>
+      {expense.description ? <p><strong>Description: </strong>{expense.description}</p> : null}
     </div>
   )
 }

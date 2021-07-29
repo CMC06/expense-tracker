@@ -23,20 +23,31 @@ function App() {
   const [expenses, setExpenses] = useState([{id: 'e0000001', payee: 'Someone I owe money', due: '10/1/22', description: 'A description of the bill', amount: '100'}]);
   //state tracking total (current month) expenses
   const [totalExpenses, setTotalExpenses] = useState(0);
+  //state tracking if itemizedBalance showing or hidden
+  const [showBalances, setShowBalances] = useState(true);
+  //state tracking if itemizedIncome showing or hidden
+  const [showIncome, setShowIncome] = useState(true);
+  //state tracking if itemizedExpenses showing or hidden
+  const [showExpenses, setShowExpenses] = useState(true);
+
+  const toggleShow = (showState, setShowState) => {
+    let show = showState;
+    setShowState(!show);
+  }
 
   
   return (
     <div className="App">
-      <Header />
+      <Header showBalances={showBalances} setShowBalances={setShowBalances} showIncome={showIncome} setShowIncome={setShowIncome} showExpenses={showExpenses} setShowExpenses={setShowExpenses} toggleShow={toggleShow} />
       <div className="overview">
         <TotalBalanceBox totalBalance={totalBalance} />
-        <TotalIncomeBox totalIncome={totalIncome} setTotalIncome={setTotalIncome} incomeReg={incomeReg} otherIncome={otherIncome} />
+        <TotalIncomeBox setTotalIncome={setTotalIncome} incomeReg={incomeReg} otherIncome={otherIncome} />
         <TotalExpenseBox totalExpenses={totalExpenses} />
       </div>
       <div className="itemized">
-        <BalanceBox balances={balances} setTotalBalance={setTotalBalance} totalBalance={totalBalance} />
-        <IncomeBox setBalances={setBalances} incomeReg={incomeReg} setIncomeReg={setIncomeReg} otherIncome={otherIncome} setOtherIncome={setOtherIncome} totalIncome={totalIncome} setTotalIncome={setTotalIncome} />
-        <ExpenseBox totalExpenses={totalExpenses} setTotalExpenses={setTotalExpenses} expenses={expenses} setExpenses={setExpenses} />
+        {showBalances ? <BalanceBox balances={balances} setTotalBalance={setTotalBalance} totalBalance={totalBalance} toggleShow={toggleShow} /> : null }
+        {showIncome ? <IncomeBox setBalances={setBalances} incomeReg={incomeReg} setIncomeReg={setIncomeReg} otherIncome={otherIncome} setOtherIncome={setOtherIncome} totalIncome={totalIncome} setTotalIncome={setTotalIncome} toggleShow={toggleShow} /> : null }
+        {showExpenses ? <ExpenseBox totalExpenses={totalExpenses} setTotalExpenses={setTotalExpenses} expenses={expenses} setExpenses={setExpenses} toggleShow={toggleShow} /> : null }
       </div>
     </div>
   );

@@ -61,10 +61,15 @@ html {
   justify-content: center;
 }
 
+.itemizedExpense {
+  display: flex;
+  flex-direction: column;
+
+}
+
 .eDateAmount {
   display: flex;
-  margin: auto;
-  max-width: 50%;
+  align-self: center;
   justify-content: center;
 }
 
