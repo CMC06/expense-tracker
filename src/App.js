@@ -24,9 +24,11 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <BalanceBox balances={balances} />
-      <TotalIncomeBox totalIncome={totalIncome} setTotalIncome={setTotalIncome} incomeReg={incomeReg} otherIncome={otherIncome} />
-      <TotalExpenseBox totalExpenses={totalExpenses} />
+      <div className="overview">
+        <BalanceBox balances={balances} />
+        <TotalIncomeBox totalIncome={totalIncome} setTotalIncome={setTotalIncome} incomeReg={incomeReg} otherIncome={otherIncome} />
+        <TotalExpenseBox totalExpenses={totalExpenses} />
+      </div>
       <IncomeBox setBalances={setBalances} incomeReg={incomeReg} setIncomeReg={setIncomeReg} otherIncome={otherIncome} setOtherIncome={setOtherIncome} totalIncome={totalIncome} setTotalIncome={setTotalIncome} />
       <ExpenseBox totalExpenses={totalExpenses} setTotalExpenses={setTotalExpenses} expenses={expenses} setExpenses={setExpenses} />
     </div>
