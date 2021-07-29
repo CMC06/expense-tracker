@@ -20,7 +20,7 @@ function App() {
   //state tracking total (current month) income
   const [totalIncome, setTotalIncome] = useState(0);
   //state tracking expenses as object
-  const [expenses, setExpenses] = useState([{id: 'e0000001', payee: 'Someone I owe money', due: '10/1/22', description: 'A description of the bill', amount: '0'}]);
+  const [expenses, setExpenses] = useState([{id: 'e0000001', payee: 'Someone I owe money', due: '10/1/22', description: 'A description of the bill', amount: '100'}]);
   //state tracking total (current month) expenses
   const [totalExpenses, setTotalExpenses] = useState(0);
 
@@ -33,9 +33,11 @@ function App() {
         <TotalIncomeBox totalIncome={totalIncome} setTotalIncome={setTotalIncome} incomeReg={incomeReg} otherIncome={otherIncome} />
         <TotalExpenseBox totalExpenses={totalExpenses} />
       </div>
-      <BalanceBox balances={balances} setTotalBalance={setTotalBalance} totalBalance={totalBalance} />
-      <IncomeBox setBalances={setBalances} incomeReg={incomeReg} setIncomeReg={setIncomeReg} otherIncome={otherIncome} setOtherIncome={setOtherIncome} totalIncome={totalIncome} setTotalIncome={setTotalIncome} />
-      <ExpenseBox totalExpenses={totalExpenses} setTotalExpenses={setTotalExpenses} expenses={expenses} setExpenses={setExpenses} />
+      <div className="itemized">
+        <BalanceBox balances={balances} setTotalBalance={setTotalBalance} totalBalance={totalBalance} />
+        <IncomeBox setBalances={setBalances} incomeReg={incomeReg} setIncomeReg={setIncomeReg} otherIncome={otherIncome} setOtherIncome={setOtherIncome} totalIncome={totalIncome} setTotalIncome={setTotalIncome} />
+        <ExpenseBox totalExpenses={totalExpenses} setTotalExpenses={setTotalExpenses} expenses={expenses} setExpenses={setExpenses} />
+      </div>
     </div>
   );
 }

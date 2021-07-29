@@ -13,8 +13,8 @@ const BalanceBox = ({ balances, setTotalBalance }) => {
   
     
   return (
-    <div>
-      <h3>Your Itemized Balances:</h3>
+    <div className="itemizedBox">
+      <h2>Your Itemized Balances:</h2>
       {balances.map((account) => (<AccountBalance account={account} key={account.id}/>))}
     </div>
   )

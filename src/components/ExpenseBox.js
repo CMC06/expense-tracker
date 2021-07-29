@@ -1,10 +1,16 @@
 import Expense from "./Expense"
 
-const ExpenseBox = ({totalExpenses, setTotalExpenses, expenses, setExpenses}) => {
+const ExpenseBox = ({ setTotalExpenses, expenses }) => {
+
+  let holdExpenses = 0;
+
+  expenses.forEach(expense => holdExpenses += Number(expense.amount));
+
+  setTotalExpenses(holdExpenses);
+
   return (
-    <div>
-      {/* Create button to add new expenses */}
-      <h3>Your itemized monthly expenses:</h3>
+    <div className="itemizedBox">
+      <h2>Your itemized monthly expenses:</h2>
       {expenses.map(expense => <Expense key={expense.id} expense={expense} />)}
     </div>
   )
