@@ -1,14 +1,20 @@
 import AccountBalance from "./AccountBalance";
 
-const BalanceBox = ({ balances }) => {
+const BalanceBox = ({ balances, setTotalBalance }) => {
   
+  let currentBalance = 0;
+
   balances.forEach((account) => {
-    console.log(account.name, account.amount);
-  })
+    currentBalance += Number(account.amount);
+  });
+
+  setTotalBalance(currentBalance);
+
+  
     
   return (
-    <div className="overviewBox">
-      <h3>Your Current Balances:</h3>
+    <div>
+      <h3>Your Itemized Balances:</h3>
       {balances.map((account) => (<AccountBalance account={account} key={account.id}/>))}
     </div>
   )
