@@ -7,6 +7,7 @@ import IncomeBox from './components/IncomeBox';
 import ExpenseBox from './components/ExpenseBox';
 import TotalExpenseBox from './components/TotalExpenseBox';
 import Header from './components/Header';
+import IncomeAdd from './components/IncomeAdd';
 
 function App() {
   //state tracking bank balances
@@ -29,6 +30,10 @@ function App() {
   const [showIncome, setShowIncome] = useState(true);
   //state tracking if itemizedExpenses showing or hidden
   const [showExpenses, setShowExpenses] = useState(true);
+  //state tracking for Income and Expense Add forms
+  const [showIncomeAdd, setShowIncomeAdd] = useState(false);
+  const [showExpenseAdd, setShowExpenseAdd] = useState(false);
+
 
   const toggleShow = (showState, setShowState) => {
     let show = showState;
@@ -38,7 +43,8 @@ function App() {
   
   return (
     <div className="App">
-      <Header showBalances={showBalances} setShowBalances={setShowBalances} showIncome={showIncome} setShowIncome={setShowIncome} showExpenses={showExpenses} setShowExpenses={setShowExpenses} toggleShow={toggleShow} />
+      <Header showBalances={showBalances} setShowBalances={setShowBalances} showIncome={showIncome} setShowIncome={setShowIncome} showExpenses={showExpenses} setShowExpenses={setShowExpenses} toggleShow={toggleShow} showIncomeAdd={showIncomeAdd} setShowIncomeAdd={setShowIncomeAdd} showExpenseAdd={showExpenseAdd} setShowExpenseAdd={setShowExpenseAdd} />
+      {showIncomeAdd ? <IncomeAdd /> : null}
       <div className="overview">
         <TotalBalanceBox totalBalance={totalBalance} />
         <TotalIncomeBox setTotalIncome={setTotalIncome} incomeReg={incomeReg} otherIncome={otherIncome} />
